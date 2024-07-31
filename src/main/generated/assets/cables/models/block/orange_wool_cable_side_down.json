@@ -1,0 +1,7 @@
+{
+  "parent": "cables:block/cable_template_side_down",
+  "textures": {
+    "particle": "minecraft:block/orange_wool",
+    "texture": "minecraft:block/orange_wool"
+  }
+}

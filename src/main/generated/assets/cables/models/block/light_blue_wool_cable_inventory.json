@@ -1,0 +1,6 @@
+{
+  "parent": "cables:block/cable_template_inventory",
+  "textures": {
+    "texture": "minecraft:block/light_blue_wool"
+  }
+}

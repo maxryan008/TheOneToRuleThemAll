@@ -15,8 +15,14 @@
 	"icon": "assets/cables/icon.png",
 	"environment": "*",
 	"entrypoints": {
+		"fabric-datagen": [
+			"dev.cables.CablesDataGenerator"
+		],
 		"main": [
 			"dev.cables.Cables"
+		],
+		"client": [
+			"dev.cables.CablesClient"
 		]
 	},
 	"mixins": [

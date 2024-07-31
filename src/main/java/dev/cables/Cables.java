@@ -1,8 +1,9 @@
 package dev.cables;
 
+import dev.cables.blocks.ModBlocks;
+import dev.cables.items.ModItems;
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,5 +13,7 @@ public class Cables implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModItems.initialize();
+		ModBlocks.initialize();
 	}
 }

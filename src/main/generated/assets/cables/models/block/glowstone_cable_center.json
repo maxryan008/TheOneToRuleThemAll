@@ -1,0 +1,7 @@
+{
+  "parent": "cables:block/cable_template_center",
+  "textures": {
+    "particle": "minecraft:block/glowstone",
+    "texture": "minecraft:block/glowstone"
+  }
+}

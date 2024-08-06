@@ -1,6 +1,7 @@
 package dev.cables.blocks;
 
 import dev.cables.Cables;
+import dev.cables.client.model.CableStyle;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -37,6 +38,8 @@ public class ModBlocks {
         CABLE_BLOCKS.add(newCable("Glass Cable", "minecraft", "glass", true, CABLE_SETTINGS.sounds(BlockSoundGroup.GLASS)));
         CABLE_BLOCKS.add(newCable("Tinted Glass Cable", "minecraft", "tinted_glass", true, CABLE_SETTINGS.sounds(BlockSoundGroup.GLASS)));
         CABLE_BLOCKS.add(newCable("Large Tinted Glass Cable", "minecraft", "tinted_glass", true, 4, CABLE_SETTINGS.sounds(BlockSoundGroup.GLASS)));
+        CABLE_BLOCKS.add(newCable("Large Lime Wool Cable", "minecraft", "lime_wool", false, 5, CABLE_SETTINGS.sounds(BlockSoundGroup.WOOL)));
+        CABLE_BLOCKS.add(newCable("Large Iron Cable", "minecraft", "iron_block", false, 4, CABLE_SETTINGS.sounds(BlockSoundGroup.METAL)));
 
 
         System.out.println("test" + ModBlocks.CABLE_BLOCKS.stream()
@@ -45,19 +48,35 @@ public class ModBlocks {
     }
 
     private static CableBlock newCable(String translationName, String modId, String blockId, boolean transparent) {
-        return register(new CableBlock(CABLE_SETTINGS.sounds(BlockSoundGroup.GLASS), new Identifier(modId, "block/" + blockId), transparent, translationName, 2), toSnakeCase(translationName), CABLES_ITEM_GROUP_KEY);
+        return register(new CableBlock(CABLE_SETTINGS.sounds(BlockSoundGroup.GLASS), new Identifier(modId, "block/" + blockId), transparent, translationName, 2, CableStyle.RECTANGULAR), toSnakeCase(translationName), CABLES_ITEM_GROUP_KEY);
     }
 
     private static CableBlock newCable(String translationName, String modId, String blockId, boolean transparent, AbstractBlock.Settings settings) {
-        return register(new CableBlock(settings, new Identifier(modId, "block/" + blockId), transparent, translationName, 2), toSnakeCase(translationName), CABLES_ITEM_GROUP_KEY);
+        return register(new CableBlock(settings, new Identifier(modId, "block/" + blockId), transparent, translationName, 2, CableStyle.RECTANGULAR), toSnakeCase(translationName), CABLES_ITEM_GROUP_KEY);
     }
 
     private static CableBlock newCable(String translationName, String modId, String blockId, boolean transparent, float radius) {
-        return register(new CableBlock(CABLE_SETTINGS.sounds(BlockSoundGroup.GLASS), new Identifier(modId, "block/" + blockId), transparent, translationName, radius), toSnakeCase(translationName), CABLES_ITEM_GROUP_KEY);
+        return register(new CableBlock(CABLE_SETTINGS.sounds(BlockSoundGroup.GLASS), new Identifier(modId, "block/" + blockId), transparent, translationName, radius, CableStyle.RECTANGULAR), toSnakeCase(translationName), CABLES_ITEM_GROUP_KEY);
     }
 
     private static CableBlock newCable(String translationName, String modId, String blockId, boolean transparent, float radius, AbstractBlock.Settings settings) {
-        return register(new CableBlock(settings, new Identifier(modId, "block/" + blockId), transparent, translationName, radius), toSnakeCase(translationName), CABLES_ITEM_GROUP_KEY);
+        return register(new CableBlock(settings, new Identifier(modId, "block/" + blockId), transparent, translationName, radius, CableStyle.RECTANGULAR), toSnakeCase(translationName), CABLES_ITEM_GROUP_KEY);
+    }
+
+    private static CableBlock newCable(String translationName, String modId, String blockId, boolean transparent, CableStyle cableStyle) {
+        return register(new CableBlock(CABLE_SETTINGS.sounds(BlockSoundGroup.GLASS), new Identifier(modId, "block/" + blockId), transparent, translationName, 2, cableStyle), toSnakeCase(translationName), CABLES_ITEM_GROUP_KEY);
+    }
+
+    private static CableBlock newCable(String translationName, String modId, String blockId, boolean transparent, CableStyle cableStyle, AbstractBlock.Settings settings) {
+        return register(new CableBlock(settings, new Identifier(modId, "block/" + blockId), transparent, translationName, 2, cableStyle), toSnakeCase(translationName), CABLES_ITEM_GROUP_KEY);
+    }
+
+    private static CableBlock newCable(String translationName, String modId, String blockId, boolean transparent, float radius, CableStyle cableStyle) {
+        return register(new CableBlock(CABLE_SETTINGS.sounds(BlockSoundGroup.GLASS), new Identifier(modId, "block/" + blockId), transparent, translationName, radius, cableStyle), toSnakeCase(translationName), CABLES_ITEM_GROUP_KEY);
+    }
+
+    private static CableBlock newCable(String translationName, String modId, String blockId, boolean transparent, float radius, CableStyle cableStyle, AbstractBlock.Settings settings) {
+        return register(new CableBlock(settings, new Identifier(modId, "block/" + blockId), transparent, translationName, radius, cableStyle), toSnakeCase(translationName), CABLES_ITEM_GROUP_KEY);
     }
 
     public static CableBlock register(Block block, String id, RegistryKey<ItemGroup> group)

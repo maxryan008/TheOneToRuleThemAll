@@ -1,6 +1,7 @@
 package dev.cables.blocks;
 
 import com.mojang.serialization.MapCodec;
+import dev.cables.client.model.CableStyle;
 import dev.cables.items.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
@@ -19,14 +20,16 @@ import org.jetbrains.annotations.Nullable;
 import static dev.cables.Cables.MOD_ID;
 
 public class CableBlock extends ConnectingBlock {
-    public static final MapCodec<CableBlock> CODEC = createCodec(settings -> new CableBlock(settings, new Identifier("minecraft", "block/bedrock"), false, "Bedrock Cable", 2));
+    public static final MapCodec<CableBlock> CODEC = createCodec(settings -> new CableBlock(settings, new Identifier("minecraft", "block/bedrock"), false, "Bedrock Cable", 2, CableStyle.RECTANGULAR));
     private final boolean TRANSPARENT;
     private final Identifier TEXTURE;
     private final String TRANSLATION_NAME;
     private final float RADIUS;
+    private final CableStyle style;
 
-    public CableBlock(Settings settings, Identifier texture, boolean transparent, String translationName, float radius) {
+    public CableBlock(Settings settings, Identifier texture, boolean transparent, String translationName, float radius, CableStyle style) {
         super(radius/16f, settings);
+        this.style = style;
         this.RADIUS = radius/16f;
         this.TRANSPARENT = transparent;
         this.TEXTURE = texture;
@@ -94,6 +97,10 @@ public class CableBlock extends ConnectingBlock {
 
     public String getTranslationName() {
         return TRANSLATION_NAME;
+    }
+
+    public CableStyle getStyle() {
+        return style;
     }
 
     @Override

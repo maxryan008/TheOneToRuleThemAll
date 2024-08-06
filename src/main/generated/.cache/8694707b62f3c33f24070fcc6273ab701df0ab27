@@ -1,11 +1,13 @@
-// 1.20.4	2024-08-05T22:38:31.1950504	Cables/Block Loot Tables
+// 1.20.4	2024-08-06T11:44:32.4065664	Cables/Block Loot Tables
 c634ca1a06c05cd9072a72b5633b677105ed5895 data\cables\loot_tables\blocks\tinted_glass_cable.json
+77da9f9ce331533261ebedbfb9e19b8b84e61482 data\cables\loot_tables\blocks\magenta_wool_cable.json
+4eced7bac33ebcfa0eac7ff9dac31a0aafc72273 data\cables\loot_tables\blocks\red_wool_cable.json
+879fab654cb4e315845b5c89250721e0fbc03920 data\cables\loot_tables\blocks\yellow_wool_cable.json
+b5f4a93403b46048c0ad149274dd50a2deb1b8ea data\cables\loot_tables\blocks\glowstone_cable.json
+da55182eeaec170343f761f37c7e5689a0d1f413 data\cables\loot_tables\blocks\orange_wool_cable.json
+ae671497ad8387810d03bea5f5551308a626325d data\cables\loot_tables\blocks\large_lime_wool_cable.json
+8929b817d51d34cdbf8daac18594c92b423b072e data\cables\loot_tables\blocks\large_tinted_glass_cable.json
 14b8e9bcb1ff36c5702bb12011d7e0c8d992218f data\cables\loot_tables\blocks\light_blue_wool_cable.json
 c1199dce84e94106c67dd1e3092d3623874bc311 data\cables\loot_tables\blocks\glass_cable.json
-4eced7bac33ebcfa0eac7ff9dac31a0aafc72273 data\cables\loot_tables\blocks\red_wool_cable.json
-77da9f9ce331533261ebedbfb9e19b8b84e61482 data\cables\loot_tables\blocks\magenta_wool_cable.json
-b5f4a93403b46048c0ad149274dd50a2deb1b8ea data\cables\loot_tables\blocks\glowstone_cable.json
-879fab654cb4e315845b5c89250721e0fbc03920 data\cables\loot_tables\blocks\yellow_wool_cable.json
-da55182eeaec170343f761f37c7e5689a0d1f413 data\cables\loot_tables\blocks\orange_wool_cable.json
+f72e7b9b34c6c272963e44ece9314e1869b5607c data\cables\loot_tables\blocks\large_iron_cable.json
 67b8d8148a27b41a90a336a9929fe0eb843d755a data\cables\loot_tables\blocks\lime_wool_cable.json
-8929b817d51d34cdbf8daac18594c92b423b072e data\cables\loot_tables\blocks\large_tinted_glass_cable.json

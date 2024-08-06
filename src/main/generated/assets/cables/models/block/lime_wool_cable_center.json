@@ -1,7 +1,0 @@
-{
-  "parent": "cables:block/cable_template_center",
-  "textures": {
-    "particle": "minecraft:block/lime_wool",
-    "texture": "minecraft:block/lime_wool"
-  }
-}

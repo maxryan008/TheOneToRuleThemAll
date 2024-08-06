@@ -1,63 +1,7 @@
 {
-  "multipart": [
-    {
-      "apply": {
-        "model": "cables:block/red_wool_cable_center"
-      }
-    },
-    {
-      "apply": {
-        "model": "cables:block/red_wool_cable_side_up",
-        "uvlock": false
-      },
-      "when": {
-        "up": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "cables:block/red_wool_cable_side_down",
-        "uvlock": false
-      },
-      "when": {
-        "down": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "cables:block/red_wool_cable_side_north",
-        "uvlock": false
-      },
-      "when": {
-        "north": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "cables:block/red_wool_cable_side_east",
-        "uvlock": false
-      },
-      "when": {
-        "east": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "cables:block/red_wool_cable_side_south",
-        "uvlock": false
-      },
-      "when": {
-        "south": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "cables:block/red_wool_cable_side_west",
-        "uvlock": false
-      },
-      "when": {
-        "west": "true"
-      }
+  "variants": {
+    "": {
+      "model": "cables:block/red_wool_cable"
     }
-  ]
+  }
 }

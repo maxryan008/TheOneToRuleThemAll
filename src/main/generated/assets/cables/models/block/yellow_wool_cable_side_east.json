@@ -1,7 +1,0 @@
-{
-  "parent": "cables:block/cable_template_side_east",
-  "textures": {
-    "particle": "minecraft:block/yellow_wool",
-    "texture": "minecraft:block/yellow_wool"
-  }
-}

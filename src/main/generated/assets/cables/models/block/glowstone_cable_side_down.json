@@ -1,7 +1,0 @@
-{
-  "parent": "cables:block/cable_template_side_down",
-  "textures": {
-    "particle": "minecraft:block/glowstone",
-    "texture": "minecraft:block/glowstone"
-  }
-}

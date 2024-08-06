@@ -1,6 +1,7 @@
 package dev.cables.blocks;
 
 import com.mojang.serialization.MapCodec;
+import dev.cables.items.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
@@ -15,16 +16,18 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.logging.Level;
+import static dev.cables.Cables.MOD_ID;
 
 public class CableBlock extends ConnectingBlock {
-    public static final MapCodec<CableBlock> CODEC = createCodec(settings -> new CableBlock(settings, new Identifier("minecraft", "block/bedrock"), false, "Bedrock Cable"));
+    public static final MapCodec<CableBlock> CODEC = createCodec(settings -> new CableBlock(settings, new Identifier("minecraft", "block/bedrock"), false, "Bedrock Cable", 2));
     private final boolean TRANSPARENT;
     private final Identifier TEXTURE;
     private final String TRANSLATION_NAME;
+    private final float RADIUS;
 
-    public CableBlock(Settings settings, Identifier texture, boolean transparent, String translationName) {
-        super(2f/16f, settings);
+    public CableBlock(Settings settings, Identifier texture, boolean transparent, String translationName, float radius) {
+        super(radius/16f, settings);
+        this.RADIUS = radius/16f;
         this.TRANSPARENT = transparent;
         this.TEXTURE = texture;
         this.TRANSLATION_NAME = translationName;
@@ -37,7 +40,8 @@ public class CableBlock extends ConnectingBlock {
                         .with(WEST, Boolean.FALSE)
                         .with(UP, Boolean.FALSE)
                         .with(DOWN, Boolean.FALSE)
-        );    }
+        );
+    }
 
 
     @Override
@@ -54,8 +58,8 @@ public class CableBlock extends ConnectingBlock {
         return TEXTURE;
     }
 
-    public Boolean getTransparent() {
-        return TRANSPARENT;
+    public float getRadius() {
+        return RADIUS;
     }
 
     @Override
@@ -80,6 +84,11 @@ public class CableBlock extends ConnectingBlock {
 
     @Override
     public boolean isTransparent(BlockState state, BlockView world, BlockPos pos) {
+        return TRANSPARENT;
+    }
+
+    public boolean getTransparent()
+    {
         return TRANSPARENT;
     }
 
@@ -123,5 +132,17 @@ public class CableBlock extends ConnectingBlock {
     private boolean isConnected(World world, BlockPos pos) {
         BlockState state = world.getBlockState(pos);
         return state.getBlock() instanceof CableBlock;
+    }
+
+    public Identifier[] getIds() {
+        return new Identifier[]{new Identifier(MOD_ID, "block/" + ModItems.toSnakeCase(this.getTranslationName())), new Identifier(MOD_ID, "item/" + ModItems.toSnakeCase(this.getTranslationName()))};
+    }
+
+    public Identifier getBlockId() {
+        return new Identifier(MOD_ID, "block/" + ModItems.toSnakeCase(this.getTranslationName()));
+    }
+
+    public Identifier getItemId() {
+        return new Identifier(MOD_ID, "item/" + ModItems.toSnakeCase(this.getTranslationName()));
     }
 }

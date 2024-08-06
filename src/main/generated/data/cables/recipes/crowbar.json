@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "0": {
+      "item": "minecraft:red_wool"
+    },
+    "1": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    " 01",
+    "010",
+    "10 "
+  ],
+  "result": {
+    "item": "cables:crowbar"
+  }
+}

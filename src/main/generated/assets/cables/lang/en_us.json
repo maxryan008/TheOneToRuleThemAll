@@ -1,10 +1,15 @@
 {
+  "block.cables.glass_cable": "Glass Cable",
   "block.cables.glowstone_cable": "Glowstone Cable",
+  "block.cables.large_tinted_glass_cable": "Large Tinted Glass Cable",
   "block.cables.light_blue_wool_cable": "Light Blue Wool Cable",
   "block.cables.lime_wool_cable": "Lime Wool Cable",
   "block.cables.magenta_wool_cable": "Magenta Wool Cable",
   "block.cables.orange_wool_cable": "Orange Wool Cable",
   "block.cables.red_wool_cable": "Red Wool Cable",
+  "block.cables.tinted_glass_cable": "Tinted Glass Cable",
   "block.cables.yellow_wool_cable": "Yellow Wool Cable",
-  "item.cables.diamond": "Diamond"
+  "item.cables.crowbar": "Crowbar",
+  "item.cables.diamond": "Diamond",
+  "item.cables.emerald_thingy": "Emerald thingy"
 }

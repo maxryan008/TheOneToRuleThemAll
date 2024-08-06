@@ -14,7 +14,7 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
-        translationBuilder.add(ModItems.DIAMOND, "Diamond");
+        ModItems.ITEMS.forEach(item -> translationBuilder.add(item, item.getTranslationName()));
         CABLE_BLOCKS.forEach(cableBlock -> {translationBuilder.add(cableBlock, cableBlock.getTranslationName());});
     }
 }

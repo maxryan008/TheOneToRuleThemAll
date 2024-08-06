@@ -22,6 +22,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockRenderView;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3d;
 import org.joml.Vector3f;
 
 import java.util.Collections;
@@ -55,41 +56,51 @@ public class CableBakedModel implements BakedModel {
         CableBlock block = (CableBlock) worldState.getBlock();
         float radius = block.getRadius();
 
-        //center part
+        if (this.style == CableStyle.RECTANGULAR)
         {
-            for (Face face : this.style.getModelCenter()) {
-                float leftOffset = radius * face.getLeftOffset();
-                float bottomOffset = radius * face.getBottomOffset();
-                float rightOffset = radius * face.getRightOffset();
-                float topOffset = radius * face.getTopOffset();
-                float depthOffset = radius * face.getDepthOffset();
-                if (!state.get(face.getProperty()))
-                {
-                    if (!state.get(getOppositeBooleanProperty(face.getDirection())))
-                    {
-                        doubleFace(face.getDirection(), face.getLeft() + leftOffset, face.getBottom() + bottomOffset, face.getRight() + rightOffset, face.getTop() + topOffset, face.getDepth() + depthOffset, emitter);
-                    }else
-                    {
-                        outsideFace(face.getDirection(), face.getLeft() + leftOffset, face.getBottom() + bottomOffset, face.getRight() + rightOffset, face.getTop() + topOffset, face.getDepth() + depthOffset, emitter);
-                    }
-                }else {
-                    insideFace(face.getDirection(), face.getLeft() + leftOffset, face.getBottom() + bottomOffset, face.getRight() + rightOffset, face.getTop() + topOffset, face.getDepth() + depthOffset, emitter);
-                }
-            }
-        }
-
-        for (int i = 0; i < this.style.getModelDirections().length; i++) {
-            if (state.get(this.style.getModelDirections()[i].getProperty()))
+            //center part
             {
-                for (int j = 0; j < this.style.getModelDirections()[i].getFaces().length; j++) {
-                    Face face = this.style.getModelDirections()[i].getFaces()[j];
+                for (Face face : this.style.getModelCenter()) {
                     float leftOffset = radius * face.getLeftOffset();
                     float bottomOffset = radius * face.getBottomOffset();
                     float rightOffset = radius * face.getRightOffset();
                     float topOffset = radius * face.getTopOffset();
                     float depthOffset = radius * face.getDepthOffset();
-                    doubleFace(face.getDirection(), face.getLeft() + leftOffset, face.getBottom() + bottomOffset, face.getRight() + rightOffset, face.getTop() + topOffset, face.getDepth() + depthOffset, emitter);
+                    if (!state.get(face.getProperty()))
+                    {
+                        if (!state.get(getOppositeBooleanProperty(face.getDirection())))
+                        {
+                            doubleFace(face.getDirection(), face.getLeft() + leftOffset, face.getBottom() + bottomOffset, face.getRight() + rightOffset, face.getTop() + topOffset, face.getDepth() + depthOffset, emitter);
+                        }else
+                        {
+                            outsideFace(face.getDirection(), face.getLeft() + leftOffset, face.getBottom() + bottomOffset, face.getRight() + rightOffset, face.getTop() + topOffset, face.getDepth() + depthOffset, emitter);
+                        }
+                    }else {
+                        insideFace(face.getDirection(), face.getLeft() + leftOffset, face.getBottom() + bottomOffset, face.getRight() + rightOffset, face.getTop() + topOffset, face.getDepth() + depthOffset, emitter);
+                    }
                 }
+            }
+
+            for (ModelDirection direction : this.style.getModelDirections()) {
+                if (state.get(direction.getProperty()))
+                {
+                    for (int j = 0; j < direction.getFaces().length; j++) {
+                        Face face = direction.getFaces()[j];
+                        float leftOffset = radius * face.getLeftOffset();
+                        float bottomOffset = radius * face.getBottomOffset();
+                        float rightOffset = radius * face.getRightOffset();
+                        float topOffset = radius * face.getTopOffset();
+                        float depthOffset = radius * face.getDepthOffset();
+                        doubleFace(face.getDirection(), face.getLeft() + leftOffset, face.getBottom() + bottomOffset, face.getRight() + rightOffset, face.getTop() + topOffset, face.getDepth() + depthOffset, emitter);
+                    }
+                }
+            }
+        }else
+        {
+            for (NonDirectionalFace face : this.style.getModelCenterFaces())
+            {
+                Vector3d[] points = face.getPoints();
+                renderFace(face.getDirection(), points, emitter, radius);
             }
         }
     }
@@ -320,16 +331,35 @@ public class CableBakedModel implements BakedModel {
         }
     }
 
-    private void renderFace(Direction direction, Vector3f bottomLeft, Vector3f bottomRight, Vector3f topRight, Vector3f topLeft, QuadEmitter emitter)
+    private void renderFace(Direction direction, Vector3d[] points, QuadEmitter emitter, float radius)
     {
-        emitter.pos(0, bottomLeft.x, bottomLeft.y, bottomLeft.z);
-        emitter.pos(1, bottomRight.x, bottomRight.y, bottomRight.z);
-        emitter.pos(2, topRight.x, topRight.y, topRight.z);
-        emitter.pos(3, topLeft.x, topLeft.y, topLeft.z);
+        if (points.length == 4)
+        {
+            emitSquare(emitter, points, radius);
+        }else if (points.length == 3)
+        {
+            emitTriangle(emitter, points, radius);
+        }
         emitter.nominalFace(direction);
         emitter.spriteBake(textureSprite, MutableQuadView.BAKE_LOCK_UV);
         emitter.color(-1, -1, -1, -1);
         emitter.emit();
+    }
+
+    private void emitSquare(QuadEmitter emitter, Vector3d[] points, float radius) {
+        emitter.pos(0, radius * (float) points[0].x+0.5f, radius * (float) points[0].y+0.5f, radius * (float) points[0].z+0.5f);
+        emitter.pos(1, radius * (float) points[1].x+0.5f, radius * (float) points[1].y+0.5f, radius * (float) points[1].z+0.5f);
+        emitter.pos(2, radius * (float) points[2].x+0.5f, radius * (float) points[2].y+0.5f, radius * (float) points[2].z+0.5f);
+        emitter.pos(3, radius * (float) points[3].x+0.5f, radius * (float) points[3].y+0.5f, radius * (float) points[3].z+0.5f);
+    }
+
+    private void emitTriangle(QuadEmitter emitter, Vector3d[] points, float radius) {
+
+        emitter.pos(0, radius * (float) points[0].x+0.5f, radius * (float) points[0].y+0.5f, radius * (float) points[0].z+0.5f);
+        emitter.pos(1, radius * (float) points[1].x+0.5f, radius * (float) points[1].y+0.5f, radius * (float) points[1].z+0.5f);
+        emitter.pos(2, radius * (float) points[2].x+0.5f, radius * (float) points[2].y+0.5f, radius * (float) points[2].z+0.5f);
+        emitter.pos(3, radius * (float) points[0].x+0.5f, radius * (float) points[0].y+0.5f, radius * (float) points[0].z+0.5f);
+
     }
 
     @Override

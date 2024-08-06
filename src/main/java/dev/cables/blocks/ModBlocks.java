@@ -39,7 +39,8 @@ public class ModBlocks {
         CABLE_BLOCKS.add(newCable("Tinted Glass Cable", "minecraft", "tinted_glass", true, CABLE_SETTINGS.sounds(BlockSoundGroup.GLASS)));
         CABLE_BLOCKS.add(newCable("Large Tinted Glass Cable", "minecraft", "tinted_glass", true, 4, CABLE_SETTINGS.sounds(BlockSoundGroup.GLASS)));
         CABLE_BLOCKS.add(newCable("Large Lime Wool Cable", "minecraft", "lime_wool", false, 5, CABLE_SETTINGS.sounds(BlockSoundGroup.WOOL)));
-        CABLE_BLOCKS.add(newCable("Large Iron Cable", "minecraft", "iron_block", false, 4, CABLE_SETTINGS.sounds(BlockSoundGroup.METAL)));
+        CABLE_BLOCKS.add(newCable("Large Iron Cable", "minecraft", "iron_block", false, 4, CableStyle.OCTAGONAL, CABLE_SETTINGS.sounds(BlockSoundGroup.METAL)));
+        CABLE_BLOCKS.add(newCable("Iron Cable", "minecraft", "iron_block", false, 2, CableStyle.OCTAGONAL, CABLE_SETTINGS.sounds(BlockSoundGroup.METAL)));
 
 
         System.out.println("test" + ModBlocks.CABLE_BLOCKS.stream()

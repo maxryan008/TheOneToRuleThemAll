@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "cables:block/iron_cable"
+    }
+  }
+}

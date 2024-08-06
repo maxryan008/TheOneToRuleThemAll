@@ -1,18 +1,20 @@
-// 1.20.4	2024-08-06T11:44:32.4095668	Cables/Model Definitions
-2fe71a875a65367e3ecaec328874921f7babfed6 assets\cables\blockstates\orange_wool_cable.json
+// 1.20.4	2024-08-07T08:28:56.9233681	Cables/Model Definitions
 3850677e4d8c05babc589c49e2f9d6cb1b31a50f assets\cables\models\item\magenta_wool_cable.json
+2fe71a875a65367e3ecaec328874921f7babfed6 assets\cables\blockstates\orange_wool_cable.json
 630774b2ed062ea05f2cf58e5331de7f87bd1eea assets\cables\models\item\yellow_wool_cable.json
 76fe57511a81f46dee025e71d26539e09b37dd6d assets\cables\models\item\glass_cable.json
 377ecc5e477fca58516c6a8b79b1d809907e5db8 assets\cables\models\item\lime_wool_cable.json
 ba9916c46185b1dfd1fedfbc2612bd6e9ffdebd6 assets\cables\models\item\diamond.json
-34581491f688fffa02f4d4344a3fa04c563fab51 assets\cables\blockstates\magenta_wool_cable.json
 c6edb2453573736d5c4b86c8307b5caa14e3a197 assets\cables\blockstates\lime_wool_cable.json
 680c16ba5e7d2c435efa4dbbe4175874191dcc77 assets\cables\blockstates\tinted_glass_cable.json
+34581491f688fffa02f4d4344a3fa04c563fab51 assets\cables\blockstates\magenta_wool_cable.json
 404e96dcdc30c04081a167fa3c85f5d7c4f0073c assets\cables\models\block\large_lime_wool_cable.json
 a67fc77068588a040f0cc11784ce3b6943d3e91f assets\cables\models\item\large_iron_cable.json
+a7a1c26a7c6b0979efcf548430b04d9fca654080 assets\cables\models\block\iron_cable.json
 4a49733fad7ddf1459f311542d6ae140f8cb8a34 assets\cables\blockstates\large_tinted_glass_cable.json
 fa75a19979b271aed7542b15aa10e04a2b22bec8 assets\cables\models\item\light_blue_wool_cable.json
 6164628d5c2a9ff67da9c172ffbffb82095851c0 assets\cables\models\block\yellow_wool_cable.json
+d890af2ddcd14556464eeeeb2fe84245eb2e627c assets\cables\blockstates\iron_cable.json
 ce82195d9783b552c00b1aef12f94b2bb1991ae3 assets\cables\models\block\large_tinted_glass_cable.json
 c5e3c36cf0d93796a5c76c5b8f6aca3bb88aa25a assets\cables\models\item\red_wool_cable.json
 0bcd637958f818415049e6a1ccf0e30edd118da1 assets\cables\models\item\tinted_glass_cable.json
@@ -38,3 +40,4 @@ dfb1564ef7b2efb97f1ff441210ec026fb8c3337 assets\cables\blockstates\large_lime_wo
 966be251c3b3ea858dbfce2507c48b68dc408b5a assets\cables\models\block\glowstone_cable.json
 739e7621ec8715ff21c694535c3e0a02104e8384 assets\cables\blockstates\red_wool_cable.json
 f7b5c3d785b0a6a97f4f7b583a005679e45a4a79 assets\cables\models\block\orange_wool_cable.json
+c2fd519f62c4ac6719638066f48a1c8e6102c298 assets\cables\models\item\iron_cable.json
